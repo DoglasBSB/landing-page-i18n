@@ -17,6 +17,10 @@ on:
 jobs:
   automate-i18n:
     runs-on: ubuntu-latest
+    # Adiciona as permissões necessárias para o GITHUB_TOKEN
+    permissions:
+      contents: write # Permissão para fazer commit e push
+      pull-requests: write # Permissão para criar Pull Requests
 
     steps:
     - name: Checkout repository
@@ -37,28 +41,24 @@ jobs:
 
     - name: Install Python dependencies
       run: pip install -r requirements.txt
-      working-directory: ./landing-page-i18n
 
     - name: Parse QA Report and Generate Corrections
       id: parse_report
       run: python scripts/parse_qa_report.py > corrections.json
-      working-directory: ./landing-page-i18n
 
     - name: Load Corrections
       id: load_corrections
       run: echo "corrections=$(cat corrections.json)" >> $GITHUB_OUTPUT
-      working-directory: ./landing-page-i18n
 
     - name: Update Translation Files
-      run: python scripts/update_translations.py "${{ steps.load_corrections.outputs.corrections }}"
-      working-directory: ./landing-page-i18n
+      run: python scripts/update_translations.py '${{ steps.load_corrections.outputs.corrections }}'
 
     - name: Commit and Push Changes (for PRs)
       if: github.event_name == 'pull_request'
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "chore(i18n): Apply automated translation fixes from QA report"
-        file_pattern: landing-page-i18n/src/locales/en/translation.json
+        file_pattern: src/locales/en/translation.json
         commit_user_name: "GitHub Actions Bot"
         commit_user_email: "github-actions[bot]@users.noreply.github.com"
 
@@ -78,21 +78,19 @@ jobs:
         base: "main"
         delete-branch: true
         add-paths: |
-          landing-page-i18n/src/locales/en/translation.json
+          src/locales/en/translation.json
 
     - name: Install project dependencies
       run: pnpm install
-      working-directory: ./landing-page-i18n
 
     - name: Build project
       run: pnpm run build
-      working-directory: ./landing-page-i18n
 
     - name: Deploy to Netlify (Preview)
       uses: nwtgck/actions-netlify@v2.0
       id: netlify_deploy # Adiciona um ID para referenciar os outputs
       with:
-        publish-dir: './landing-page-i18n/dist'
+        publish-dir: './dist'
         production-branch: 'main'
         github-token: ${{ secrets.GITHUB_TOKEN }}
         deploy-message: 'Deploy from GitHub Actions'
