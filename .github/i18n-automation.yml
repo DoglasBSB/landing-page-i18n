@@ -119,7 +119,7 @@ jobs:
       if: success() && github.event_name == 'pull_request'
       uses: slackapi/slack-github-action@v1.26.0
       with:
-        channel-id: 'D09HK3G1LGY' # Substitua pelo ID do seu canal
+        channel-id: 'C09GWHJES04' # Substitua pelo ID do seu canal
         payload: |
           {
             "text": "🚀 Preview de i18n pronto para revisão!",
@@ -148,7 +148,7 @@ jobs:
       if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
       uses: slackapi/slack-github-action@v1.26.0
       with:
-        channel-id: 'D09HK3G1LGY' # Substitua pelo ID do seu canal
+        channel-id: 'C09GWHJES04' # Substitua pelo ID do seu canal
         payload: |
           {
             "text": "✅ Deploy em produção concluído!",
