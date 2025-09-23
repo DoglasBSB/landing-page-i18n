@@ -11,13 +11,13 @@
     "description": "We offer complete solutions in software development, IT consulting and process automation for companies of all sizes.",
     "cta": {
       "primary": "Get started now",
-      "secondary": "Watch demo"
+      "secondary": "View demonstration"
     }
   },
   "stats": {
     "projects": "Projects delivered",
     "satisfaction": "Satisfaction rate",
-    "support": "Technical support"
+    "support": "24/7 Technicall support"
   },
   "services": {
     "title": "Our Services",
@@ -34,13 +34,13 @@
     "automation": {
       "title": "Process Automation",
       "description": "Efficiency and productivity guaranteed",
-      "content": "We automate repetitive tasks so you can focus on what really matters for your business and achieve maximum efficiency in your daily operations."
+      "content": "We automate repetitive tasks so you can focus on what really matters for your business."
     }
   },
   "cta": {
     "title": "Ready to transform your business?",
-    "description": "Contact us today and discover how we can help.",
-    "button": "Talk to specialist"
+    "description": "Contact us today and find out how we can help you right away.",
+    "button": "Talk to a specialist"
   },
   "footer": {
     "description": "Transforming ideas into innovative technological solutions.",
@@ -64,4 +64,3 @@
     "copyright": "© 2024 TechSolutions. All rights reserved."
   }
 }
-
