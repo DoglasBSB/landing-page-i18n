@@ -17,6 +17,10 @@ on:
 jobs:
   automate-i18n:
     runs-on: ubuntu-latest
+    # Adiciona as permissões necessárias para o GITHUB_TOKEN
+    permissions:
+      contents: write # Permissão para fazer commit e push
+      pull-requests: write # Permissão para criar Pull Requests
 
     steps:
     - name: Checkout repository
