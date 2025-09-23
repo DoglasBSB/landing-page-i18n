@@ -12,7 +12,7 @@ Este relatório documenta os problemas de tradução identificados na landing pa
 - **Problema:** Tradução inconsistente. Deveria ser "View demonstration" para manter a formalidade
 - **Sugestão:** "View demonstrations"
 - **Severidade:** Média
-- **Status:** 🔴 Aberto
+- **Status:** 🟢 Resolvido
 
 ### 2. Stats Section - Suporte Técnico
 **Localização:** `stats.support`
@@ -21,7 +21,7 @@ Este relatório documenta os problemas de tradução identificados na landing pa
 - **Problema:** Falta informação "24/7" na versão em inglês. Deveria ser "24/7 Technical support"
 - **Sugestão:** "24/7 Technicall support"
 - **Severidade:** Baixa
-- **Status:** 🔴 Aberto
+- **Status:** 🟢 Resolvido
 
 ### 3. Services Section - Automação de Processos
 **Localização:** `services.automation.content`
@@ -30,7 +30,7 @@ Este relatório documenta os problemas de tradução identificados na landing pa
 - **Problema:** Versão em inglês tem texto excessivamente longo que pode quebrar o layout. Sugestão de texto mais conciso: "We automate repetitive tasks so you can focus on what really matters for your business."
 - **Sugestão:** "We automate repetitive tasks so you can focus on what really matters for your business."
 - **Severidade:** Alta
-- **Status:** 🔴 Aberto
+- **Status:** 🟢 Resolvido
 
 ### 4. CTA Section - Descrição
 **Localização:** `cta.description`
@@ -39,7 +39,7 @@ Este relatório documenta os problemas de tradução identificados na landing pa
 - **Problema:** Falta tradução de "mesmo" (today mesmo = right now/immediately). Deveria ser "Contact us today and find out how we can help you right away."
 - **Sugestão:** "Contact us today and find out how we can help you right away."
 - **Severidade:** Baixa
-- **Status:** 🔴 Aberto
+- **Status:** 🟢 Resolvido
 
 ### 5. CTA Section - Botão
 **Localização:** `cta.button`
@@ -48,7 +48,7 @@ Este relatório documenta os problemas de tradução identificados na landing pa
 - **Problema:** Falta artigo "a" - deveria ser "Talk to a specialist".
 - **Sugestão:** "Talk to a specialist"
 - **Severidade:** Média
-- **Status:** 🔴 Aberto
+- **Status:** 🟢 Resolvido
 
 ### 6. Footer - Copyright
 **Localização:** `footer.copyright`
@@ -57,7 +57,7 @@ Este relatório documenta os problemas de tradução identificados na landing pa
 - **Problema:** A tradução está correta, mas o relatório apontou uma inconsistência. Para fins de automação, vamos garantir a padronização. Deveria ser "© 2024 TechSolutions. All rights reserved."
 - **Sugestão:** "© 2024 TechSolutions. All rights reserved."
 - **Severidade:** Baixa
-- **Status:** 🔴 Aberto
+- **Status:** 🟢 Resolvido
 
 ## 📊 Estatísticas
 - **Total de problemas:** 6
