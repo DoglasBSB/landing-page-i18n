@@ -1,65 +1,50 @@
 import json
-import os
 import sys
+from functools import reduce
+import os
 
-def update_json_recursively(data, key_parts, value):
-    if not key_parts:
-        return value
-    
-    current_key = key_parts[0]
-    if isinstance(data, dict):
-        if current_key not in data:
-            data[current_key] = {}
-        data[current_key] = update_json_recursively(data[current_key], key_parts[1:], value)
-    else:
-        data = {current_key: update_json_recursively({}, key_parts[1:], value)}
-    return data
+def set_nested_key(d, keys, value):
+    """
+    Sets a value in a nested dictionary using a list of keys.
+    """
+    reduce(lambda d, k: d.setdefault(k, {}), keys[:-1], d)[keys[-1]] = value
 
-def update_translation_file(file_path, corrections):
+def update_translations(corrections_json_str, translation_file_path):
+    """
+    Updates the translation JSON file based on the provided corrections.
+
+    Args:
+        corrections_json_str (str): A JSON string with the corrections.
+        translation_file_path (str): The path to the en/translation.json file.
+    """
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        corrections = json.loads(corrections_json_str)
+    except json.JSONDecodeError:
+        print("Error: Invalid JSON string provided for corrections.", file=sys.stderr)
+        sys.exit(1)
+
+    try:
+        with open(translation_file_path, 'r', encoding='utf-8') as f:
+            translations = json.load(f)
     except FileNotFoundError:
-        data = {}
+        print(f"Error: Translation file not found at {translation_file_path}", file=sys.stderr)
+        sys.exit(1)
     except json.JSONDecodeError:
-        print(f"Erro ao decodificar JSON em {file_path}. Iniciando com JSON vazio.")
-        data = {}
-
-    updated = False
-    for key, lang_corrections in corrections.items():
-        key_parts = key.split('.')
-        for lang, new_value in lang_corrections.items():
-            if os.path.basename(os.path.dirname(file_path)) == lang:
-                temp_data = json.loads(json.dumps(data))
-                updated_data = update_json_recursively(temp_data, key_parts, new_value)
-                if updated_data != data:
-                    data = updated_data
-                    updated = True
-
-    if updated:
-        with open(file_path, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        print(f"Arquivo de tradução {file_path} atualizado com sucesso.")
-    else:
-        print(f"Nenhuma atualização necessária para {file_path}.")
-
-if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Uso: python update_translations.py <json_corrections>")
+        print(f"Error: Could not decode JSON from {translation_file_path}", file=sys.stderr)
         sys.exit(1)
 
-    try:
-        corrections_json = sys.argv[1]
-        corrections = json.loads(corrections_json)
-    except json.JSONDecodeError:
-        print("Erro: Argumento JSON inválido.")
-        sys.exit(1)
+    for item in corrections:
+        keys = item['location'].split('.')
+        suggestion = item['suggestion']
+        set_nested_key(translations, keys, suggestion)
 
-    project_root = os.path.dirname(os.path.dirname(__file__))
-    en_file = os.path.join(project_root, 'src', 'locales', 'en', 'translation.json')
-    pt_file = os.path.join(project_root, 'src', 'locales', 'pt', 'translation.json')
+    with open(translation_file_path, 'w', encoding='utf-8') as f:
+        json.dump(translations, f, indent=2, ensure_ascii=False)
 
-    update_translation_file(en_file, corrections)
-    update_translation_file(pt_file, corrections)
+    print(f"Successfully updated {len(corrections)} translation(s) in {translation_file_path}")
 
-
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        # The script is expected to be run from the 'landing-page-i18n' directory
+        target_file = 'src/locales/en/translation.json'
+        update_translations(sys.argv[1], target_file)

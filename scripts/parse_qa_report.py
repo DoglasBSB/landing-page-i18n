@@ -1,40 +1,49 @@
 import re
 import json
-import os
+import sys
 
-def parse_qa_report(report_path):
-    with open(report_path, 'r', encoding='utf-8') as f:
-        content = f.read()
+def parse_qa_report(file_path):
+    """
+    Parses the QA translation report to extract correction suggestions.
 
-    corrections = {}
-    problem_blocks = re.findall(r'### \d+\. .*?\n\*\*Localização:\*\* `(.*?)`\n- \*\*PT:\*\* (.*?)\n- \*\*EN:\*\* (.*?)\n- \*\*Problema:\*\* (.*?)\n', content, re.DOTALL)
+    Args:
+        file_path (str): The path to the QA_TRANSLATION_REPORT.md file.
 
-    for location, pt_text, en_text, problem in problem_blocks:
-        key = location.strip()
-        
-        if key == 'hero.cta.secondary':
-            corrections[key] = {'en': 'View demonstration'}
-        elif key == 'stats.support':
-            corrections[key] = {'en': '24/7 Technical support'}
-        elif key == 'services.automation.content':
-            corrections[key] = {'en': 'We automate repetitive tasks so you can focus on what really matters for your business.'}
-        elif key == 'cta.description':
-            corrections[key] = {'en': 'Contact us today and discover how we can help you.'}
-        elif key == 'cta.button':
-            corrections[key] = {'en': 'Talk to a specialist'}
-        elif key == 'footer.copyright':
-            corrections[key] = {'en': '© 2024 TechSolutions. All rights reserved.'}
-        
+    Returns:
+        list: A list of dictionaries, where each dictionary contains the
+              'location' (i18n key) and the 'suggestion' (corrected text).
+    """
+    corrections = []
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        # Regex to find all problem blocks and capture location and suggestion
+        # This is a more robust regex to handle variations in the report
+        pattern = re.compile(
+            r"### \d+\..*?\n"
+            r"**Localização:** `(.*?)`.*?\n"
+            r"(?:- \*\*PT:\*\*.*\n- \*\*EN:\*\*.*\n- \*\*Problema:\*\*.*?Deveria ser \"(.*?)\"|.*?Falta informação \"(.*?)\" na versão em inglês|.*?tem texto excessivamente longo.*?sugerida: \"(.*?)\"|.*?Falta tradução de \"mesmo\".*?sugerida: \"(.*?)\"|.*?Falta artigo \"a\" - deveria ser \"(.*?)\")",
+            re.DOTALL | re.MULTILINE
+        )
+
+        matches = pattern.findall(content)
+
+        for match in matches:
+            location = match[0]
+            # Find the first non-empty suggestion from the captured groups
+            suggestion = next((s for s in match[1:] if s), None)
+            if location and suggestion:
+                corrections.append({"location": location, "suggestion": suggestion})
+
+    except FileNotFoundError:
+        print(f"Error: Report file not found at {file_path}", file=sys.stderr)
+        return []
+
     return corrections
 
-if __name__ == '__main__':
-    # O QA_TRANSLATION_REPORT.md já existe no diretório raiz do projeto
-    report_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'QA_TRANSLATION_REPORT.md')
-    
-    if os.path.exists(report_file_path):
-        corrections = parse_qa_report(report_file_path)
-        print(json.dumps(corrections, indent=2))
-    else:
-        print(f"Erro: O arquivo de relatório de QA não foi encontrado em {report_file_path}")
-
-
+if __name__ == "__main__":
+    # The script is expected to be run from the 'landing-page-i18n' directory
+    report_path = 'QA_TRANSLATION_REPORT.md'
+    parsed_corrections = parse_qa_report(report_path)
+    print(json.dumps(parsed_corrections, indent=2))
