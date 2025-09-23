@@ -48,4 +48,4 @@ if __name__ == "__main__":
     # The script is expected to be run from the 'landing-page-i18n' directory
     report_path = 'QA_TRANSLATION_REPORT.md'
     parsed_corrections = parse_qa_report(report_path)
-    print(json.dumps(parsed_corrections, indent=2))
+    print(json.dumps(parsed_corrections))
