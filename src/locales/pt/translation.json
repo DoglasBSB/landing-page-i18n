@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "services": "Serviços",
+    "contact": "Contato"
+  },
+  "hero": {
+    "badge": "Novo! Versão 2.0 disponível",
+    "title": "Transforme seu negócio com",
+    "title_highlight": " tecnologia inovadora",
+    "description": "Oferecemos soluções completas em desenvolvimento de software, consultoria em TI e automação de processos para empresas de todos os tamanhos.",
+    "cta": {
+      "primary": "Começar agora",
+      "secondary": "Ver demonstração"
+    }
+  },
+  "stats": {
+    "projects": "Projetos entregues",
+    "satisfaction": "Taxa de satisfação",
+    "support": "Suporte técnico"
+  },
+  "services": {
+    "title": "Nossos Serviços",
+    "web": {
+      "title": "Desenvolvimento Web",
+      "description": "Criamos aplicações web modernas e responsivas",
+      "content": "Utilizamos as mais recentes tecnologias para desenvolver soluções web que atendem às necessidades do seu negócio."
+    },
+    "consulting": {
+      "title": "Consultoria em TI",
+      "description": "Estratégias personalizadas para sua empresa",
+      "content": "Nossa equipe de especialistas oferece consultoria completa para otimizar seus processos tecnológicos."
+    },
+    "automation": {
+      "title": "Automação de Processos",
+      "description": "Eficiência e produtividade garantidas",
+      "content": "Automatizamos tarefas repetitivas para que você possa focar no que realmente importa para seu negócio."
+    }
+  },
+  "cta": {
+    "title": "Pronto para transformar seu negócio?",
+    "description": "Entre em contato conosco hoje mesmo e descubra como podemos ajudar.",
+    "button": "Falar com especialista"
+  },
+  "footer": {
+    "description": "Transformando ideias em soluções tecnológicas inovadoras.",
+    "services": {
+      "title": "Serviços",
+      "web": "Desenvolvimento Web",
+      "mobile": "Aplicativos Mobile",
+      "consulting": "Consultoria em TI",
+      "automation": "Automação"
+    },
+    "company": {
+      "title": "Empresa",
+      "about": "Sobre nós",
+      "team": "Nossa equipe",
+      "careers": "Carreiras",
+      "blog": "Blog"
+    },
+    "contact": {
+      "title": "Contato"
+    },
+    "copyright": "© 2024 TechSolutions. Todos os direitos reservados."
+  }
+}
+

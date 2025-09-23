@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "New! Version 2.0 available",
+    "title": "Transform your business with",
+    "title_highlight": " innovative technology",
+    "description": "We offer complete solutions in software development, IT consulting and process automation for companies of all sizes.",
+    "cta": {
+      "primary": "Get started now",
+      "secondary": "Watch demo"
+    }
+  },
+  "stats": {
+    "projects": "Projects delivered",
+    "satisfaction": "Satisfaction rate",
+    "support": "Technical support"
+  },
+  "services": {
+    "title": "Our Services",
+    "web": {
+      "title": "Web Development",
+      "description": "We create modern and responsive web applications",
+      "content": "We use the latest technologies to develop web solutions that meet your business needs."
+    },
+    "consulting": {
+      "title": "IT Consulting",
+      "description": "Personalized strategies for your company",
+      "content": "Our team of experts offers complete consulting to optimize your technological processes."
+    },
+    "automation": {
+      "title": "Process Automation",
+      "description": "Efficiency and productivity guaranteed",
+      "content": "We automate repetitive tasks so you can focus on what really matters for your business and achieve maximum efficiency in your daily operations."
+    }
+  },
+  "cta": {
+    "title": "Ready to transform your business?",
+    "description": "Contact us today and discover how we can help.",
+    "button": "Talk to specialist"
+  },
+  "footer": {
+    "description": "Transforming ideas into innovative technological solutions.",
+    "services": {
+      "title": "Services",
+      "web": "Web Development",
+      "mobile": "Mobile Apps",
+      "consulting": "IT Consulting",
+      "automation": "Automation"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About us",
+      "team": "Our team",
+      "careers": "Careers",
+      "blog": "Blog"
+    },
+    "contact": {
+      "title": "Contact"
+    },
+    "copyright": "© 2024 TechSolutions. All rights reserved."
+  }
+}
+
