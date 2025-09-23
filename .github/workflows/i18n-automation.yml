@@ -47,7 +47,7 @@ jobs:
       run: echo "corrections=$(cat corrections.json)" >> $GITHUB_OUTPUT
 
     - name: Update Translation Files
-      run: python scripts/update_translations.py "${{ steps.load_corrections.outputs.corrections }}"
+      run: python scripts/update_translations.py '${{ steps.load_corrections.outputs.corrections }}'
 
     - name: Commit and Push Changes (for PRs)
       if: github.event_name == 'pull_request'
