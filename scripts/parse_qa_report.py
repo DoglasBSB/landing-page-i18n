@@ -20,10 +20,13 @@ def parse_qa_report(file_path):
 
         # Regex to find all problem blocks and capture location and suggestion
         # This is a more robust regex to handle variations in the report
+        # Revised regex to explicitly look for "Localização" and "Sugestão" fields.
+        # This is more robust than trying to parse suggestions from problem descriptions.
         pattern = re.compile(
-            r"### \d+\..*?\n"
-            r"**Localização:** `(.*?)`.*?\n"
-            r"(?:- \*\*PT:\*\*.*\n- \*\*EN:\*\*.*\n- \*\*Problema:\*\*.*?Deveria ser \"(.*?)\"|.*?Falta informação \"(.*?)\" na versão em inglês|.*?tem texto excessivamente longo.*?sugerida: \"(.*?)\"|.*?Falta tradução de \"mesmo\".*?sugerida: \"(.*?)\"|.*?Falta artigo \"a\" - deveria ser \"(.*?)\")",
+            r"### \d+\..*?\n"                                       # Start of problem block (e.g., ### 1. Hero Section - CTA Secundário)
+            r"\*\*Localização:\*\* `(.*?)`.*?\n"                     # Capture location (Group 1)
+            r"(?:.|\n)*?"                                           # Match any characters including newlines, non-greedily, until "Sugestão:"
+            r"- \*\*Sugestão:\*\* \"(.*?)\"",                        # Capture suggestion (Group 2)
             re.DOTALL | re.MULTILINE
         )
 
@@ -31,8 +34,7 @@ def parse_qa_report(file_path):
 
         for match in matches:
             location = match[0]
-            # Find the first non-empty suggestion from the captured groups
-            suggestion = next((s for s in match[1:] if s), None)
+            suggestion = match[1] # The suggestion is now directly in the second capturing group
             if location and suggestion:
                 corrections.append({"location": location, "suggestion": suggestion})
 
