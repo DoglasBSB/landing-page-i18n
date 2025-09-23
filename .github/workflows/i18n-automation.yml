@@ -53,12 +53,17 @@ jobs:
     - name: Update Translation Files
       run: python scripts/update_translations.py '${{ steps.load_corrections.outputs.corrections }}'
 
+    - name: Update QA Report Status
+      run: python scripts/update_report_status.py '${{ steps.load_corrections.outputs.corrections }}'
+
     - name: Commit and Push Changes (for PRs)
       if: github.event_name == 'pull_request'
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "chore(i18n): Apply automated translation fixes from QA report"
-        file_pattern: src/locales/en/translation.json
+        file_pattern: |
+          src/locales/en/translation.json
+          QA_TRANSLATION_REPORT.md
         commit_user_name: "GitHub Actions Bot"
         commit_user_email: "github-actions[bot]@users.noreply.github.com"
 
@@ -79,6 +84,7 @@ jobs:
         delete-branch: true
         add-paths: |
           src/locales/en/translation.json
+          QA_TRANSLATION_REPORT.md
 
     - name: Install project dependencies
       run: pnpm install
