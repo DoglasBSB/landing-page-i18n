@@ -19,7 +19,7 @@ Este relatório documenta os problemas de tradução identificados na landing pa
 - **PT:** "Suporte técnico" (implica 24/7)
 - **EN:** "Technical support" ❌
 - **Problema:** Falta informação "24/7" na versão em inglês. Deveria ser "24/7 Technical support"
-- **Sugestão:** "24/7 Technical support"
+- **Sugestão:** "24/7 Technicall support"
 - **Severidade:** Baixa
 - **Status:** 🔴 Aberto
 
