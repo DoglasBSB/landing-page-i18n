@@ -10,9 +10,9 @@ Este relatório documenta os problemas de tradução identificados na landing pa
 - **PT:** "Ver demonstração"
 - **EN:** "Watch demo" ❌
 - **Problema:** Tradução inconsistente. Deveria ser "View demonstration" para manter a formalidade
-- **Sugestão:** "View demonstration"
+- **Sugestão:** "View demo"
 - **Severidade:** Média
-- **Status:** 🟢 Resolvido
+- **Status:** 🔴 Aberto
 
 ### 2. Stats Section - Suporte Técnico
 **Localização:** `stats.support`
