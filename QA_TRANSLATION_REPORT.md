@@ -10,7 +10,7 @@ Este relatório documenta os problemas de tradução identificados na landing pa
 - **PT:** "Ver demonstração"
 - **EN:** "Watch demo" ❌
 - **Problema:** Tradução inconsistente. Deveria ser "View demonstration" para manter a formalidade
-- **Sugestão:** "View demo"
+- **Sugestão:** "View demonstration"
 - **Severidade:** Média
 - **Status:** 🟢 Resolvido
 
