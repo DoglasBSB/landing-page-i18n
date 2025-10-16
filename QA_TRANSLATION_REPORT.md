@@ -12,7 +12,7 @@ Este relatório documenta os problemas de tradução identificados na landing pa
 - **Problema:** Tradução inconsistente. Deveria ser "View demonstration" para manter a formalidade
 - **Sugestão:** "View demonstration"
 - **Severidade:** Média
-- **Status:** 🔴 Aberto
+- **Status:** 🟢 Resolvido
 
 ### 2. Stats Section - Suporte Técnico
 **Localização:** `stats.support`
