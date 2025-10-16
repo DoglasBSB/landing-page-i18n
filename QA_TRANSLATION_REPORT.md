@@ -52,10 +52,10 @@ Este relatório documenta os problemas de tradução identificados na landing pa
 
 ### 6. Footer - Copyright
 **Localização:** `footer.copyright`
-- **PT:** "© 2024 TechSolutions. Todos os direitos reservados."
-- **EN:** "© 2024 TechSolutions. All rights reserved." ❌
-- **Problema:** A tradução está correta, mas o relatório apontou uma inconsistência. Para fins de automação, vamos garantir a padronização. Deveria ser "© 2024 TechSolutions. All rights reserved."
-- **Sugestão:** "© 2024 TechSolutions. All rights reserved."
+- **PT:** "© 2025 TechSolutions. Todos os direitos reservados."
+- **EN:** "© 2025 TechSolutions. All rights reserved." ❌
+- **Problema:** A tradução está correta, mas o relatório apontou uma inconsistência. Para fins de automação, vamos garantir a padronização. Deveria ser "© 2025 TechSolutions. All rights reserved."
+- **Sugestão:** "© 2025 TechSolutions. All rights reserved."
 - **Severidade:** Baixa
 - **Status:** 🟢 Resolvido
 
